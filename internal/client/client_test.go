@@ -4,9 +4,9 @@ import (
 	"context"
 	"time"
 
+	"github.com/DNS-Pro/core/internal/client"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	"gitlab.shcn.ir/shecan/shecan-2/dnsPro/core/internal/client"
 )
 
 var _ = Describe("Client", func() {
