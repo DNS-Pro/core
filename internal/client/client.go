@@ -1,12 +1,10 @@
 package client
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
-	"os"
-	"os/signal"
 	"runtime"
-	"syscall"
 
 	"github.com/go-playground/validator/v10"
 	core "github.com/v2fly/v2ray-core/v5"
@@ -122,7 +120,7 @@ func (cl *Client) GenerateClient(cfg *core.Config) (*core.Instance, error) {
 }
 
 // Start launches the client and waits for termination signals.
-func (cl *Client) Start(clientInstance *core.Instance, signal <-chan os.Signal) error {
+func (cl *Client) Start(ctx context.Context, clientInstance *core.Instance) error {
 	if err := clientInstance.Start(); err != nil {
 		return fmt.Errorf("failed to start client: %w", err)
 	}
@@ -130,13 +128,13 @@ func (cl *Client) Start(clientInstance *core.Instance, signal <-chan os.Signal) 
 
 	runtime.GC()
 
-	<-signal
+	<-ctx.Done()
 
 	return nil
 }
 
 // AutoStart, generates config and client and launches the client
-func (cl *Client) AutoStart() error {
+func (cl *Client) AutoStart(ctx context.Context) error {
 	cfg, err := cl.GenerateConfig()
 	if err != nil {
 		return fmt.Errorf("error generating client config: %s", err)
@@ -145,9 +143,7 @@ func (cl *Client) AutoStart() error {
 	if err != nil {
 		return fmt.Errorf("error generating client: %s", err)
 	}
-	osSignals := make(chan os.Signal, 1)
-	signal.Notify(osSignals, os.Interrupt, syscall.SIGTERM)
-	return cl.Start(client, osSignals)
+	return cl.Start(ctx, client)
 }
 
 // NewClient initializes a new client with default values if none are provided.

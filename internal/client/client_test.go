@@ -1,13 +1,12 @@
 package client_test
 
 import (
-	"os"
+	"context"
 	"time"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 	"gitlab.shcn.ir/shecan/shecan-2/dnsPro/core/internal/client"
-	mockOS "gitlab.shcn.ir/shecan/shecan-2/dnsPro/core/mocks/os"
 )
 
 var _ = Describe("Client", func() {
@@ -162,13 +161,11 @@ var _ = Describe("Client", func() {
 				cl, err := client.GenerateClient(cfg)
 				Expect(err).To(BeNil())
 				// ...
-				osSignals := make(chan os.Signal, 1)
-				time.AfterFunc(1*time.Second, func() {
-					mockSignal := mockOS.MockSignal{}
-					osSignals <- &mockSignal
-				})
-				err = client.Start(cl, osSignals)
+				ctx, cncl := context.WithTimeout(context.Background(), 100*time.Microsecond)
+				err = client.Start(ctx, cl)
 				Expect(err).To(BeNil())
+				Expect(ctx.Err()).ToNot(BeNil())
+				cncl()
 			})
 		}
 	})
