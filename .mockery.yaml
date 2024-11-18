@@ -1,0 +1,6 @@
+with-expecter: true
+packages:
+  os:
+    config:
+      all: true
+      dir: mocks/{{ .PackageName }}
