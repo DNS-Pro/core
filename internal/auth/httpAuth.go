@@ -20,7 +20,7 @@ func (a *HttpAuthenticator) run(ctx context.Context) error {
 		return fmt.Errorf("error requesting url (%s): %s", a.Url, err)
 	}
 	sc := resp.StatusCode
-	if sc < 200 || sc > 300 {
+	if sc < 200 || sc >= 300 {
 		return fmt.Errorf("unexpected status code requesting url (%s): %d", a.Url, sc)
 	}
 	return nil
