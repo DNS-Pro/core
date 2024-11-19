@@ -18,6 +18,7 @@ require (
 	github.com/apernet/hysteria/core/v2 v2.4.5 // indirect
 	github.com/apernet/quic-go v0.45.2-0.20240702221538-ed74cfbe8b6e // indirect
 	github.com/bufbuild/protocompile v0.14.1 // indirect
+	github.com/creasty/defaults v1.8.0
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-metro v0.0.0-20211217172704-adc40b04c140 // indirect
 	github.com/ebfe/bcrypt_pbkdf v0.0.0-20140212075826-3c8d2dcb253a // indirect

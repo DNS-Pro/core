@@ -2,6 +2,7 @@ package auth
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/sirupsen/logrus"
@@ -13,7 +14,8 @@ type IAuthenticator interface {
 type AuthType int
 
 const (
-	AUTH_HTTP AuthType = iota
+	AUTH_NONE AuthType = iota
+	AUTH_HTTP
 )
 
 type Authenticator struct {
@@ -44,4 +46,18 @@ func (a *Authenticator) Start(ctx context.Context) error {
 			}
 		}
 	}
+}
+
+func (at *AuthType) UnmarshalJSON(data []byte) error {
+	v := new(AuthType)
+	switch string(data) {
+	case "":
+		*v = AUTH_NONE
+	case "HTTP":
+		*v = AUTH_HTTP
+	default:
+		return fmt.Errorf("unexpected authenticator type (%s). valid values: HTTP", string(data))
+	}
+	*at = *v
+	return nil
 }
