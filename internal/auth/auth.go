@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/onsi/ginkgo/v2"
 	"github.com/sirupsen/logrus"
 )
 
@@ -66,13 +65,11 @@ func (a *Authenticator) Start(ctx context.Context) error {
 }
 
 func NewAuthenticator(interval time.Duration, auther IAuther) (*Authenticator, error) {
-	ginkgo.GinkgoWriter.Printf("auther: %v", auther)
 	v := Authenticator{
 		runEvery:       interval,
 		iAuthenticator: auther,
 	}
 	v.aType.FromAuthenticator(auther)
-	ginkgo.GinkgoWriter.Printf("auther2: %+v", v)
 	if auther != nil {
 		if err := auther.SetDefaults(); err != nil {
 			return nil, fmt.Errorf("error setting defaul values: %s", err)
