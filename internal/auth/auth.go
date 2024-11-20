@@ -10,7 +10,6 @@ import (
 
 type IAuther interface {
 	Run(ctx context.Context) error
-	SetBaseAuth(*Authenticator)
 	Validate() error
 	SetDefaults() error
 }
@@ -26,7 +25,7 @@ func (at *AuthType) FromAuthenticator(authenticator IAuther) {
 	switch authenticator.(type) {
 	case nil:
 		*at = AUTH_NONE
-	case *HttpAuthenticator:
+	case *HttpAuther:
 		*at = AUTH_HTTP
 	default:
 		*at = AUTH_UNKNOWN
@@ -45,6 +44,9 @@ func (a *Authenticator) getLogger() *logrus.Entry {
 }
 
 func (a *Authenticator) Start(ctx context.Context) error {
+	if a.iAuthenticator == nil {
+		return nil
+	}
 	ticker := time.NewTicker(a.runEvery)
 	defer ticker.Stop()
 
@@ -77,7 +79,6 @@ func NewAuthenticator(interval time.Duration, auther IAuther) (*Authenticator, e
 		if err := auther.Validate(); err != nil {
 			return nil, fmt.Errorf("error validating authenticator: %s", err)
 		}
-		auther.SetBaseAuth(&v)
 	}
 	return &v, nil
 }
