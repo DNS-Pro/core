@@ -33,8 +33,3 @@ func (a *HttpAuther) Validate() error {
 func (a *HttpAuther) SetDefaults() error {
 	return defaults.Set(a)
 }
-func NewHttpAuther(url string) *HttpAuther {
-	return &HttpAuther{
-		Url: url,
-	}
-}

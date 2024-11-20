@@ -11,6 +11,64 @@ import (
 )
 
 var _ = Describe("HttpAuth", func() {
+	Describe("Validate", Label("Validate"), func() {
+		type testCase struct {
+			name      string
+			tType     TestCaseType
+			input     *auth.HttpAuther
+			expectErr bool // expect validation error
+		}
+		// ...
+		tests := []testCase{
+			{
+				name:  "Valid data",
+				tType: HAPPY_PATH,
+				input: &auth.HttpAuther{"http://example.com"},
+			},
+			{
+				name:  "Valid data (with path)",
+				tType: HAPPY_PATH,
+				input: &auth.HttpAuther{"http://example.com/example"},
+			},
+			{
+				name:  "Valid data (with port)",
+				tType: HAPPY_PATH,
+				input: &auth.HttpAuther{"http://example.com:1020"},
+			},
+			{
+				name:      "Invalid data (no url schema)",
+				tType:     HAPPY_PATH,
+				input:     &auth.HttpAuther{"example.com"},
+				expectErr: true,
+			},
+			{
+				name:      "Invalid data (invalid url schema)",
+				tType:     HAPPY_PATH,
+				input:     &auth.HttpAuther{"invalid://example.com"},
+				expectErr: true,
+			},
+			{
+				name:      "Invalid data (invalid port)",
+				tType:     HAPPY_PATH,
+				input:     &auth.HttpAuther{"http://example.com:test"},
+				expectErr: true,
+			},
+		}
+		// ...
+		for _, tt := range tests {
+			It(tt.name, Label(string(tt.tType)), func() {
+				// Arrange
+				// Act
+				err := tt.input.Validate()
+				// Assert
+				if tt.expectErr {
+					Expect(err).ToNot(BeNil())
+				} else {
+					Expect(err).To(BeNil())
+				}
+			})
+		}
+	})
 	Describe("Run", Label("Run"), func() {
 		type testCase struct {
 			name          string
@@ -60,7 +118,7 @@ var _ = Describe("HttpAuth", func() {
 			It(tt.name, Label(string(tt.tType)), func() {
 				// Arrange
 				setupServer(tt)
-				httpAuther := auth.NewHttpAuther(server.URL())
+				httpAuther := auth.HttpAuther{Url: server.URL()}
 				// Act
 				err := httpAuther.Run(context.TODO())
 				// Assert
