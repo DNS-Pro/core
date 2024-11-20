@@ -5,23 +5,40 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/onsi/ginkgo/v2"
 	"github.com/sirupsen/logrus"
 )
 
-type IAuthenticator interface {
-	run(ctx context.Context) error
+type IAuther interface {
+	Run(ctx context.Context) error
+	SetBaseAuth(*Authenticator)
+	Validate() error
+	SetDefaults() error
 }
 type AuthType int
 
 const (
 	AUTH_NONE AuthType = iota
 	AUTH_HTTP
+	AUTH_UNKNOWN
 )
 
+func (at *AuthType) FromAuthenticator(authenticator IAuther) {
+	switch authenticator.(type) {
+	case nil:
+		*at = AUTH_NONE
+	case *HttpAuthenticator:
+		*at = AUTH_HTTP
+	default:
+		*at = AUTH_UNKNOWN
+	}
+}
+
+// ...
 type Authenticator struct {
 	runEvery       time.Duration
-	aType          AuthType `validate:"required"`
-	iAuthenticator IAuthenticator
+	aType          AuthType
+	iAuthenticator IAuther
 }
 
 func (a *Authenticator) getLogger() *logrus.Entry {
@@ -39,7 +56,7 @@ func (a *Authenticator) Start(ctx context.Context) error {
 			return nil
 		case <-ticker.C:
 			a.getLogger().Debug("calling run")
-			if err := a.iAuthenticator.run(ctx); err != nil {
+			if err := a.iAuthenticator.Run(ctx); err != nil {
 				a.getLogger().WithError(err).Error("error calling run")
 			} else {
 				a.getLogger().Debug("done calling run")
@@ -48,16 +65,22 @@ func (a *Authenticator) Start(ctx context.Context) error {
 	}
 }
 
-func (at *AuthType) UnmarshalJSON(data []byte) error {
-	v := new(AuthType)
-	switch string(data) {
-	case "":
-		*v = AUTH_NONE
-	case "HTTP":
-		*v = AUTH_HTTP
-	default:
-		return fmt.Errorf("unexpected authenticator type (%s). valid values: HTTP", string(data))
+func NewAuthenticator(interval time.Duration, auther IAuther) (*Authenticator, error) {
+	ginkgo.GinkgoWriter.Printf("auther: %v", auther)
+	v := Authenticator{
+		runEvery:       interval,
+		iAuthenticator: auther,
 	}
-	*at = *v
-	return nil
+	v.aType.FromAuthenticator(auther)
+	ginkgo.GinkgoWriter.Printf("auther2: %+v", v)
+	if auther != nil {
+		if err := auther.SetDefaults(); err != nil {
+			return nil, fmt.Errorf("error setting defaul values: %s", err)
+		}
+		if err := auther.Validate(); err != nil {
+			return nil, fmt.Errorf("error validating authenticator: %s", err)
+		}
+		auther.SetBaseAuth(&v)
+	}
+	return &v, nil
 }
