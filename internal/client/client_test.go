@@ -13,6 +13,7 @@ var _ = Describe("Client", func() {
 	Describe("NewClient", Label("NewClient"), func() {
 		tests := []struct {
 			name                    string
+			tType                   TestCaseType
 			dnsAddr                 client.DnsAddress
 			bindIP                  string
 			httpPort, socksPort     uint32
@@ -20,7 +21,8 @@ var _ = Describe("Client", func() {
 			wantErr                 bool
 		}{
 			{
-				name: "Happy Path - Valid Parameters",
+				name:  "Valid Parameters",
+				tType: HAPPY_PATH,
 				dnsAddr: client.DnsAddress{
 					IP:   "8.8.8.8",
 					Port: 53,
@@ -33,7 +35,8 @@ var _ = Describe("Client", func() {
 				wantErr:       false,
 			},
 			{
-				name: "Failure Path - Invalid DNS IP",
+				name:  "Fail on invalid DNS IP",
+				tType: FAILURE,
 				dnsAddr: client.DnsAddress{
 					IP:   "invalid-ip",
 					Port: 53,
@@ -46,7 +49,8 @@ var _ = Describe("Client", func() {
 				wantErr:       true,
 			},
 			{
-				name: "Failure Path - Invalid Bind IP",
+				name:  "Fail on invalid Bind IP",
+				tType: FAILURE,
 				dnsAddr: client.DnsAddress{
 					IP:   "8.8.8.8",
 					Port: 53,
@@ -59,7 +63,8 @@ var _ = Describe("Client", func() {
 				wantErr:       true,
 			},
 			{
-				name: "Failure Path - Invalid Query Strategy",
+				name:  "Fail on invalid Query Strategy",
+				tType: FAILURE,
 				dnsAddr: client.DnsAddress{
 					IP:   "8.8.8.8",
 					Port: 53,
@@ -72,7 +77,8 @@ var _ = Describe("Client", func() {
 				wantErr:       true,
 			},
 			{
-				name: "Failure Path - Invalid Log Level",
+				name:  "Fail on invalid Log Level",
+				tType: FAILURE,
 				dnsAddr: client.DnsAddress{
 					IP:   "8.8.8.8",
 					Port: 53,
@@ -102,13 +108,15 @@ var _ = Describe("Client", func() {
 	Describe("GenerateClient", Label("GenerateClient"), func() {
 		tests := []struct {
 			name                    string
+			tType                   TestCaseType
 			dnsAddr                 client.DnsAddress
 			bindIP                  string
 			httpPort, socksPort     uint32
 			queryStrategy, logLevel string
 		}{
 			{
-				name: "Happy Path - Valid Parameters",
+				name:  "Valid Parameters",
+				tType: HAPPY_PATH,
 				dnsAddr: client.DnsAddress{
 					IP:   "8.8.8.8",
 					Port: 53,
@@ -134,13 +142,15 @@ var _ = Describe("Client", func() {
 	Describe("Start", Label("StartClient"), func() {
 		tests := []struct {
 			name                    string
+			tType                   TestCaseType
 			dnsAddr                 client.DnsAddress
 			bindIP                  string
 			httpPort, socksPort     uint32
 			queryStrategy, logLevel string
 		}{
 			{
-				name: "Happy Path - Valid Parameters",
+				name:  "Valid Parameters",
+				tType: HAPPY_PATH,
 				dnsAddr: client.DnsAddress{
 					IP:   "8.8.8.8",
 					Port: 53,
@@ -156,13 +166,9 @@ var _ = Describe("Client", func() {
 			It(tt.name, func() {
 				client, err := client.NewClient(tt.dnsAddr, tt.bindIP, tt.httpPort, tt.socksPort, tt.queryStrategy, tt.logLevel)
 				Expect(err).To(BeNil())
-				cfg, err := client.GenerateConfig()
-				Expect(err).To(BeNil())
-				cl, err := client.GenerateClient(cfg)
-				Expect(err).To(BeNil())
 				// ...
 				ctx, cncl := context.WithTimeout(context.Background(), 100*time.Microsecond)
-				err = client.Start(ctx, cl)
+				err = client.Start(ctx)
 				Expect(err).To(BeNil())
 				Expect(ctx.Err()).ToNot(BeNil())
 				cncl()

@@ -11,3 +11,11 @@ func TestClient(t *testing.T) {
 	RegisterFailHandler(Fail)
 	RunSpecs(t, "Client Suite")
 }
+
+// ...
+type TestCaseType string
+
+const (
+	HAPPY_PATH TestCaseType = "Happy"
+	FAILURE    TestCaseType = "Failuer"
+)

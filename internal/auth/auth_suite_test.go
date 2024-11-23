@@ -21,11 +21,11 @@ const (
 )
 
 // ...
-var iAuthMock *mockAuth.MockIAuthenticator
+var mockIAuther *mockAuth.MockIAuther
 
 func resetMock() {
-	iAuthMock = mockAuth.NewMockIAuthenticator(GinkgoT())
+	mockIAuther = mockAuth.NewMockIAuther(GinkgoT())
 }
 func asserMockCall() {
-	iAuthMock.AssertExpectations(GinkgoT())
+	mockIAuther.AssertExpectations(GinkgoT())
 }

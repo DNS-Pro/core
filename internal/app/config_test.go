@@ -129,7 +129,7 @@ var _ = Describe("Config", func() {
 			})
 		}
 	})
-	Describe("ClientConfig", Label("ClientConfig"), func() {
+	Describe("DnsConfig", Label("DnsConfig"), func() {
 		type testCase struct {
 			describe  string
 			tType     TestCaseType
@@ -197,7 +197,7 @@ var _ = Describe("Config", func() {
 			})
 		}
 	})
-	Describe("ClientConfig", Label("ClientConfig"), func() {
+	Describe("AuthenticatorConfig", Label("AuthenticatorConfig"), func() {
 		type testCase struct {
 			describe  string
 			tType     TestCaseType

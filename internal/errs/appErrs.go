@@ -23,9 +23,9 @@ func (e *baseAppErr) Error() string {
 type AppConfigValidationErr struct{ *baseAppErr }
 type AppDefaultValueErr struct{ *baseAppErr }
 
-func NewAppConfigValidationErr(e error) IAppErr {
+func NewConfigValidationErr(e error) IAppErr {
 	return AppConfigValidationErr{&baseAppErr{message: "error validating app config", txt: e.Error()}}
 }
-func NewAppConfigDefaultValueErr(e error) IAppErr {
+func NewConfigDefaultValueErr(e error) IAppErr {
 	return AppDefaultValueErr{&baseAppErr{message: "error assigning default app config values", txt: e.Error()}}
 }

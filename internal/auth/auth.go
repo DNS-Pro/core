@@ -4,15 +4,15 @@ import (
 	"context"
 	"time"
 
-	"github.com/DNS-Pro/core/internal/errs"
 	"github.com/sirupsen/logrus"
 )
 
 type IAuther interface {
 	Run(ctx context.Context) error
-	Validate() error
-	SetDefaults() error
+	GetType() AuthType
 }
+
+// ...
 type AuthType int
 
 const (
@@ -21,29 +21,20 @@ const (
 	AUTH_UNKNOWN
 )
 
-func (at *AuthType) FromAuthenticator(authenticator IAuther) {
-	switch authenticator.(type) {
-	case nil:
-		*at = AUTH_NONE
-	case *HttpAuther:
-		*at = AUTH_HTTP
-	default:
-		*at = AUTH_UNKNOWN
-	}
-}
-
 // ...
-type Authenticator struct {
+type IAuthenticator interface {
+	Start(ctx context.Context) error
+}
+type authenticator struct {
 	runEvery       time.Duration
-	aType          AuthType
 	iAuthenticator IAuther
 }
 
-func (a *Authenticator) getLogger() *logrus.Entry {
-	return logrus.WithField("module", "auth").WithField("authenticator", a.aType)
+func (a *authenticator) getLogger() *logrus.Entry {
+	return logrus.WithField("module", "authenticator").WithField("auther", a.iAuthenticator.GetType())
 }
 
-func (a *Authenticator) Start(ctx context.Context) error {
+func (a *authenticator) Start(ctx context.Context) error {
 	if a.iAuthenticator == nil {
 		return nil
 	}
@@ -66,20 +57,13 @@ func (a *Authenticator) Start(ctx context.Context) error {
 	}
 }
 
-// validate auther and create new Authenticator.
-func NewAuthenticator(interval time.Duration, auther IAuther) (*Authenticator, error) {
-	v := Authenticator{
+// NewAuthenticator validates and creates new Authenticator.
+//
+// Using factory is the only way to create a authenticator, so validated configs are ensured.
+func NewAuthenticator(interval time.Duration, auther IAuther) (IAuthenticator, error) {
+	v := authenticator{
 		runEvery:       interval,
 		iAuthenticator: auther,
-	}
-	v.aType.FromAuthenticator(auther)
-	if auther != nil {
-		if err := auther.SetDefaults(); err != nil {
-			return nil, errs.NewAppConfigDefaultValueErr(err)
-		}
-		if err := auther.Validate(); err != nil {
-			return nil, errs.NewAppConfigValidationErr(err)
-		}
 	}
 	return &v, nil
 }

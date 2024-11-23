@@ -11,8 +11,8 @@ import (
 
 type app struct {
 	config        *appConfig
-	authenticator *auth.Authenticator
-	dnsCl         *client.Client
+	authenticator auth.IAuthenticator
+	dnsCl         client.IClient
 }
 
 func (a *app) Run(ctx context.Context) {
@@ -21,7 +21,7 @@ func (a *app) Run(ctx context.Context) {
 			logrus.WithError(err).Error("error in authenticator process")
 		}
 	}()
-	if err := a.dnsCl.AutoStart(ctx); err != nil {
+	if err := a.dnsCl.Start(ctx); err != nil {
 		logrus.WithError(err).Error("error in dns client process")
 	}
 }
@@ -30,22 +30,13 @@ func NewApp(cfg *appConfig) (*app, error) {
 		config: cfg,
 	}
 	// ...
-	authenticator, err := getAuthenticator(&cfg.Authenticator, &cfg.Client)
+	authenticator, err := GetAuthenticator(&cfg.Authenticator, &cfg.Client)
 	if err != nil {
 		return nil, err
 	}
 	v.authenticator = authenticator
 	// ...
-	cl, err := client.NewClient(
-		client.DnsAddress{
-			IP:   cfg.DNS.IP,
-			Port: cfg.DNS.Port,
-		},
-		cfg.Client.BindAddress,
-		cfg.Client.HttpListenPort,
-		cfg.Client.SocksListenPort,
-		cfg.Client.QueryStrategy,
-		cfg.Client.LogLevel)
+	cl, err := GetClient(&cfg.DNS, &cfg.Client)
 	if err != nil {
 		return nil, err
 	}
@@ -54,15 +45,37 @@ func NewApp(cfg *appConfig) (*app, error) {
 	return &v, nil
 }
 
-func getAuthenticator(authCfg *AuthenticatorConfig, clCfg *ClientConfig) (*auth.Authenticator, error) {
+func GetAuther(authCfg *AuthenticatorConfig) (auth.IAuther, error) {
 	var auther auth.IAuther
+	var err error
 	switch authCfg.Type {
 	case auth.AUTH_NONE:
 		auther = nil
 	case auth.AUTH_HTTP:
-		auther = &auth.HttpAuther{Url: authCfg.Url}
+		auther, err = auth.NewHttpAuther(authCfg.Url)
 	default:
 		return nil, fmt.Errorf("unknown auther type %d", authCfg.Type)
 	}
+	return auther, err
+}
+func GetAuthenticator(authCfg *AuthenticatorConfig, clCfg *ClientConfig) (auth.IAuthenticator, error) {
+	auther, err := GetAuther(authCfg)
+	if err != nil {
+		return nil, err
+	}
 	return auth.NewAuthenticator(clCfg.RunAuthEvery, auther)
+}
+func GetClient(dnsCfg *DnsConfig, clCfg *ClientConfig) (client.IClient, error) {
+	cl, err := client.NewClient(
+		client.DnsAddress{
+			IP:   dnsCfg.IP,
+			Port: dnsCfg.Port,
+		},
+		clCfg.BindAddress,
+		clCfg.HttpListenPort,
+		clCfg.SocksListenPort,
+		clCfg.QueryStrategy,
+		clCfg.LogLevel,
+	)
+	return cl, err
 }

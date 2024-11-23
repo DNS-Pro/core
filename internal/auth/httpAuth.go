@@ -5,16 +5,17 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/DNS-Pro/core/internal/errs"
 	"github.com/creasty/defaults"
 	"github.com/go-playground/validator/v10"
 	"github.com/onsi/ginkgo/v2"
 )
 
-type HttpAuther struct {
+type httpAuther struct {
 	Url string `validate:"required,http_url"`
 }
 
-func (a *HttpAuther) Run(ctx context.Context) error {
+func (a *httpAuther) Run(ctx context.Context) error {
 	resp, err := http.Get(a.Url)
 	if err != nil {
 		return fmt.Errorf("error requesting url (%s): %s", a.Url, err)
@@ -26,10 +27,24 @@ func (a *HttpAuther) Run(ctx context.Context) error {
 	}
 	return nil
 }
-func (a *HttpAuther) Validate() error {
-	validate := validator.New(validator.WithRequiredStructEnabled())
-	return validate.Struct(a)
+func (a *httpAuther) GetType() AuthType {
+	return AUTH_HTTP
 }
-func (a *HttpAuther) SetDefaults() error {
-	return defaults.Set(a)
+
+// ...
+// NewHttpAuther validates and creates auther.
+//
+// Using factory is the only way to create a HttpAuther, so validated configs are ensured.
+func NewHttpAuther(url string) (IAuther, error) {
+	v := httpAuther{
+		Url: url,
+	}
+	if err := defaults.Set(&v); err != nil {
+		return nil, errs.NewConfigDefaultValueErr(err)
+	}
+	validate := validator.New(validator.WithRequiredStructEnabled())
+	if err := validate.Struct(&v); err != nil {
+		return nil, errs.NewConfigValidationErr(err)
+	}
+	return &v, nil
 }

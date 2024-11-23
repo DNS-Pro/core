@@ -34,9 +34,6 @@ type appConfig struct {
 	Authenticator AuthenticatorConfig
 }
 
-func (cfg *appConfig) Validate() error {
-	return getAppConfigValidator().Struct(cfg)
-}
 func (cfg *appConfig) EncodeString() (string, error) {
 	v, err := json.Marshal(cfg)
 	if err != nil {
@@ -54,6 +51,10 @@ func (cfg *appConfig) DecodeString(s string) error {
 	}
 	return nil
 }
+
+// NewAppConfig validates and creates appConfig
+//
+// Using factory is the only way to create an appConfig, so validated configs are ensured.
 func NewAppConfig(clientConf *ClientConfig, dnsConfig *DnsConfig, authenticatorConfig *AuthenticatorConfig) (*appConfig, error) {
 	v := &appConfig{
 		Client:        *clientConf,
@@ -61,10 +62,10 @@ func NewAppConfig(clientConf *ClientConfig, dnsConfig *DnsConfig, authenticatorC
 		Authenticator: *authenticatorConfig,
 	}
 	if err := defaults.Set(v); err != nil {
-		return nil, errs.NewAppConfigDefaultValueErr(err)
+		return nil, errs.NewConfigDefaultValueErr(err)
 	}
-	if err := v.Validate(); err != nil {
-		return nil, errs.NewAppConfigValidationErr(err)
+	if err := getAppConfigValidator().Struct(&v); err != nil {
+		return nil, errs.NewConfigValidationErr(err)
 	}
 	return v, nil
 }

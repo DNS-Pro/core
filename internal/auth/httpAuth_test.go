@@ -5,18 +5,18 @@ import (
 	"net/http"
 
 	"github.com/DNS-Pro/core/internal/auth"
-	"github.com/go-playground/validator/v10"
+	"github.com/DNS-Pro/core/internal/errs"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/ghttp"
 )
 
 var _ = Describe("HttpAuth", func() {
-	Describe("Validate", Label("Validate"), func() {
+	Describe("NewHttpAuther", Label("NewHttpAuther"), func() {
 		type testCase struct {
 			name      string
 			tType     TestCaseType
-			input     *auth.HttpAuther
+			url       string
 			expectErr error // expect validation error
 		}
 		// ...
@@ -24,35 +24,35 @@ var _ = Describe("HttpAuth", func() {
 			{
 				name:  "Valid data",
 				tType: HAPPY_PATH,
-				input: &auth.HttpAuther{"http://example.com"},
+				url:   "http://example.com",
 			},
 			{
 				name:  "Valid data (with path)",
 				tType: HAPPY_PATH,
-				input: &auth.HttpAuther{"http://example.com/example"},
+				url:   "http://example.com/example",
 			},
 			{
 				name:  "Valid data (with port)",
 				tType: HAPPY_PATH,
-				input: &auth.HttpAuther{"http://example.com:1020"},
+				url:   "http://example.com:1020",
 			},
 			{
 				name:      "Invalid data (no url schema)",
 				tType:     FAILURE,
-				input:     &auth.HttpAuther{"example.com"},
-				expectErr: validator.ValidationErrors{},
+				url:       "example.com",
+				expectErr: errs.AppConfigValidationErr{},
 			},
 			{
 				name:      "Invalid data (invalid url schema)",
 				tType:     FAILURE,
-				input:     &auth.HttpAuther{"invalid://example.com"},
-				expectErr: validator.ValidationErrors{},
+				url:       "invalid://example.com",
+				expectErr: errs.AppConfigValidationErr{},
 			},
 			{
 				name:      "Invalid data (invalid port)",
 				tType:     FAILURE,
-				input:     &auth.HttpAuther{"http://example.com:test"},
-				expectErr: validator.ValidationErrors{},
+				url:       "http://example.com:test",
+				expectErr: errs.AppConfigValidationErr{},
 			},
 		}
 		// ...
@@ -60,13 +60,15 @@ var _ = Describe("HttpAuth", func() {
 			It(tt.name, Label(string(tt.tType)), func() {
 				// Arrange
 				// Act
-				err := tt.input.Validate()
+				auther, err := auth.NewHttpAuther(tt.url)
 				// Assert
 				if tt.expectErr != nil {
 					Expect(err).ToNot(BeNil())
 					Expect(err).To(BeAssignableToTypeOf(tt.expectErr))
+					Expect(auther).To(BeNil())
 				} else {
 					Expect(err).To(BeNil())
+					Expect(auther).NotTo(BeNil())
 				}
 			})
 		}
@@ -120,9 +122,10 @@ var _ = Describe("HttpAuth", func() {
 			It(tt.name, Label(string(tt.tType)), func() {
 				// Arrange
 				setupServer(tt)
-				httpAuther := auth.HttpAuther{Url: server.URL()}
+				httpAuther, err := auth.NewHttpAuther(server.URL())
+				Expect(err).To(BeNil())
 				// Act
-				err := httpAuther.Run(context.TODO())
+				err = httpAuther.Run(context.TODO())
 				// Assert
 				Expect(server.ReceivedRequests()).Should(HaveLen(1))
 				if tt.expectErr {
