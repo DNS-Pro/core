@@ -5,7 +5,7 @@ package auth
 import (
 	context "context"
 
-	auth "github.com/DNS-Pro/core/internal/auth"
+	auth "github.com/DNS-Pro/core/pkg/auth"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -110,96 +110,6 @@ func (_c *MockIAuther_Run_Call) Return(_a0 error) *MockIAuther_Run_Call {
 }
 
 func (_c *MockIAuther_Run_Call) RunAndReturn(run func(context.Context) error) *MockIAuther_Run_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// SetDefaults provides a mock function with given fields:
-func (_m *MockIAuther) SetDefaults() error {
-	ret := _m.Called()
-
-	if len(ret) == 0 {
-		panic("no return value specified for SetDefaults")
-	}
-
-	var r0 error
-	if rf, ok := ret.Get(0).(func() error); ok {
-		r0 = rf()
-	} else {
-		r0 = ret.Error(0)
-	}
-
-	return r0
-}
-
-// MockIAuther_SetDefaults_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SetDefaults'
-type MockIAuther_SetDefaults_Call struct {
-	*mock.Call
-}
-
-// SetDefaults is a helper method to define mock.On call
-func (_e *MockIAuther_Expecter) SetDefaults() *MockIAuther_SetDefaults_Call {
-	return &MockIAuther_SetDefaults_Call{Call: _e.mock.On("SetDefaults")}
-}
-
-func (_c *MockIAuther_SetDefaults_Call) Run(run func()) *MockIAuther_SetDefaults_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run()
-	})
-	return _c
-}
-
-func (_c *MockIAuther_SetDefaults_Call) Return(_a0 error) *MockIAuther_SetDefaults_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MockIAuther_SetDefaults_Call) RunAndReturn(run func() error) *MockIAuther_SetDefaults_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// Validate provides a mock function with given fields:
-func (_m *MockIAuther) Validate() error {
-	ret := _m.Called()
-
-	if len(ret) == 0 {
-		panic("no return value specified for Validate")
-	}
-
-	var r0 error
-	if rf, ok := ret.Get(0).(func() error); ok {
-		r0 = rf()
-	} else {
-		r0 = ret.Error(0)
-	}
-
-	return r0
-}
-
-// MockIAuther_Validate_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Validate'
-type MockIAuther_Validate_Call struct {
-	*mock.Call
-}
-
-// Validate is a helper method to define mock.On call
-func (_e *MockIAuther_Expecter) Validate() *MockIAuther_Validate_Call {
-	return &MockIAuther_Validate_Call{Call: _e.mock.On("Validate")}
-}
-
-func (_c *MockIAuther_Validate_Call) Run(run func()) *MockIAuther_Validate_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run()
-	})
-	return _c
-}
-
-func (_c *MockIAuther_Validate_Call) Return(_a0 error) *MockIAuther_Validate_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MockIAuther_Validate_Call) RunAndReturn(run func() error) *MockIAuther_Validate_Call {
 	_c.Call.Return(run)
 	return _c
 }

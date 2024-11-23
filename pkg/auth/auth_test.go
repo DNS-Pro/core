@@ -3,7 +3,7 @@ package auth_test
 import (
 	"time"
 
-	"github.com/DNS-Pro/core/internal/auth"
+	"github.com/DNS-Pro/core/pkg/auth"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )

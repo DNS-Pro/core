@@ -1,6 +1,6 @@
 with-expecter: true
 packages:
-  github.com/DNS-Pro/core/internal/auth:
+  github.com/DNS-Pro/core/pkg/auth:
     config:
       all: true
       dir: mocks/{{ .PackageName }}

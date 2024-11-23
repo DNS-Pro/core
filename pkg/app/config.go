@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/DNS-Pro/core/internal/auth"
-	"github.com/DNS-Pro/core/internal/errs"
+	"github.com/DNS-Pro/core/pkg/auth"
+	"github.com/DNS-Pro/core/pkg/errs"
 	"github.com/creasty/defaults"
 	"github.com/go-playground/validator/v10"
 )

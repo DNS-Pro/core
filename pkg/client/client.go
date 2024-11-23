@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/DNS-Pro/core/internal/errs"
+	"github.com/DNS-Pro/core/pkg/errs"
 	"github.com/go-playground/validator/v10"
 	core "github.com/v2fly/v2ray-core/v5"
 	v2net "github.com/v2fly/v2ray-core/v5/common/net"

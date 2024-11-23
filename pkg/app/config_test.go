@@ -3,8 +3,8 @@ package app_test
 import (
 	"time"
 
-	"github.com/DNS-Pro/core/internal/app"
-	"github.com/DNS-Pro/core/internal/auth"
+	"github.com/DNS-Pro/core/pkg/app"
+	"github.com/DNS-Pro/core/pkg/auth"
 	"github.com/creasty/defaults"
 	"github.com/go-playground/validator/v10"
 	. "github.com/onsi/ginkgo/v2"

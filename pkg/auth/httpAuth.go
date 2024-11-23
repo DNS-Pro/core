@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/DNS-Pro/core/internal/errs"
+	"github.com/DNS-Pro/core/pkg/errs"
 	"github.com/creasty/defaults"
 	"github.com/go-playground/validator/v10"
 	"github.com/onsi/ginkgo/v2"
