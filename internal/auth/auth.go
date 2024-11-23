@@ -2,9 +2,9 @@ package auth
 
 import (
 	"context"
-	"fmt"
 	"time"
 
+	"github.com/DNS-Pro/core/internal/errs"
 	"github.com/sirupsen/logrus"
 )
 
@@ -74,10 +74,10 @@ func NewAuthenticator(interval time.Duration, auther IAuther) (*Authenticator, e
 	v.aType.FromAuthenticator(auther)
 	if auther != nil {
 		if err := auther.SetDefaults(); err != nil {
-			return nil, fmt.Errorf("error setting defaul values: %s", err)
+			return nil, errs.NewAppConfigDefaultValueErr(err)
 		}
 		if err := auther.Validate(); err != nil {
-			return nil, fmt.Errorf("error validating authenticator: %s", err)
+			return nil, errs.NewAppConfigValidationErr(err)
 		}
 	}
 	return &v, nil

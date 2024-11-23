@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/DNS-Pro/core/internal/auth"
+	"github.com/go-playground/validator/v10"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/ghttp"
@@ -16,7 +17,7 @@ var _ = Describe("HttpAuth", func() {
 			name      string
 			tType     TestCaseType
 			input     *auth.HttpAuther
-			expectErr bool // expect validation error
+			expectErr error // expect validation error
 		}
 		// ...
 		tests := []testCase{
@@ -37,21 +38,21 @@ var _ = Describe("HttpAuth", func() {
 			},
 			{
 				name:      "Invalid data (no url schema)",
-				tType:     HAPPY_PATH,
+				tType:     FAILURE,
 				input:     &auth.HttpAuther{"example.com"},
-				expectErr: true,
+				expectErr: validator.ValidationErrors{},
 			},
 			{
 				name:      "Invalid data (invalid url schema)",
-				tType:     HAPPY_PATH,
+				tType:     FAILURE,
 				input:     &auth.HttpAuther{"invalid://example.com"},
-				expectErr: true,
+				expectErr: validator.ValidationErrors{},
 			},
 			{
 				name:      "Invalid data (invalid port)",
-				tType:     HAPPY_PATH,
+				tType:     FAILURE,
 				input:     &auth.HttpAuther{"http://example.com:test"},
-				expectErr: true,
+				expectErr: validator.ValidationErrors{},
 			},
 		}
 		// ...
@@ -61,8 +62,9 @@ var _ = Describe("HttpAuth", func() {
 				// Act
 				err := tt.input.Validate()
 				// Assert
-				if tt.expectErr {
+				if tt.expectErr != nil {
 					Expect(err).ToNot(BeNil())
+					Expect(err).To(BeAssignableToTypeOf(tt.expectErr))
 				} else {
 					Expect(err).To(BeNil())
 				}
