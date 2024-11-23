@@ -146,7 +146,7 @@ func (cl *Client) AutoStart(ctx context.Context) error {
 	return cl.Start(ctx, client)
 }
 
-// NewClient initializes a new client with default values if none are provided.
+// NewClient validates config and initializes a new client. default values are injected if none are provided.
 func NewClient(dnsAddr DnsAddress, bindAddr string, httpPort, socksPort uint32, queryStrategy, logLevel string) (*Client, error) {
 	cl := &Client{
 		DnsAddress:      dnsAddr,

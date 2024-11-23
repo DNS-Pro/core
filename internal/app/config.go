@@ -35,7 +35,7 @@ type appConfig struct {
 }
 
 func (cfg *appConfig) Validate() error {
-	return GetAppConfigValidator().Struct(cfg)
+	return getAppConfigValidator().Struct(cfg)
 }
 func (cfg *appConfig) EncodeString() (string, error) {
 	v, err := json.Marshal(cfg)
@@ -77,7 +77,7 @@ func NewAppConfigFromString(clientConf *ClientConfig, configStr string) (*appCon
 }
 
 // ...
-func GetAppConfigValidator() *validator.Validate {
+func getAppConfigValidator() *validator.Validate {
 	validate := validator.New(validator.WithRequiredStructEnabled())
 	return validate
 }

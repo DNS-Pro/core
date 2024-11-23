@@ -66,6 +66,7 @@ func (a *Authenticator) Start(ctx context.Context) error {
 	}
 }
 
+// validate auther and create new Authenticator.
 func NewAuthenticator(interval time.Duration, auther IAuther) (*Authenticator, error) {
 	v := Authenticator{
 		runEvery:       interval,
