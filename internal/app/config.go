@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/DNS-Pro/core/internal/auth"
+	"github.com/DNS-Pro/core/internal/errs"
 	"github.com/creasty/defaults"
 	"github.com/go-playground/validator/v10"
 )
@@ -24,27 +25,26 @@ type DnsConfig struct {
 	Port uint16 `validate:"required"`
 }
 type AuthenticatorConfig struct {
-	Type auth.AuthType `validate:"required"`
-	Url  string        `validate:"http_url,required_if=Type 0"`
+	Type auth.AuthType `default:"0"`
+	Url  string
 }
-type AppConfig struct {
+type appConfig struct {
 	DNS           DnsConfig
 	Client        ClientConfig `json:"-"`
 	Authenticator AuthenticatorConfig
 }
 
-func (cfg *AppConfig) Validate() error {
-	validate := validator.New(validator.WithRequiredStructEnabled())
-	return validate.Struct(cfg)
+func (cfg *appConfig) Validate() error {
+	return GetAppConfigValidator().Struct(cfg)
 }
-func (cfg *AppConfig) EncodeString() (string, error) {
+func (cfg *appConfig) EncodeString() (string, error) {
 	v, err := json.Marshal(cfg)
 	if err != nil {
 		return "", fmt.Errorf("error marshaling config: %s", err)
 	}
 	return base64.StdEncoding.EncodeToString(v), nil
 }
-func (cfg *AppConfig) DecodeString(s string) error {
+func (cfg *appConfig) DecodeString(s string) error {
 	decodedBytes, err := base64.StdEncoding.DecodeString(s)
 	if err != nil {
 		return fmt.Errorf("error decoding config: %s", err)
@@ -54,17 +54,30 @@ func (cfg *AppConfig) DecodeString(s string) error {
 	}
 	return nil
 }
-func NewAppConfig(clientConf *ClientConfig, configStr string) (*AppConfig, error) {
-	v := &AppConfig{}
+func NewAppConfig(clientConf *ClientConfig, dnsConfig *DnsConfig, authenticatorConfig *AuthenticatorConfig) (*appConfig, error) {
+	v := &appConfig{
+		Client:        *clientConf,
+		DNS:           *dnsConfig,
+		Authenticator: *authenticatorConfig,
+	}
+	if err := defaults.Set(v); err != nil {
+		return nil, errs.NewAppConfigDefaultValueErr(err)
+	}
+	if err := v.Validate(); err != nil {
+		return nil, errs.NewAppConfigValidationErr(err)
+	}
+	return v, nil
+}
+func NewAppConfigFromString(clientConf *ClientConfig, configStr string) (*appConfig, error) {
+	v := &appConfig{}
 	if err := v.DecodeString(configStr); err != nil {
 		return nil, err
 	}
-	v.Client = *clientConf
-	if err := defaults.Set(v); err != nil {
-		return nil, fmt.Errorf("error setting defaul values: %s", err)
-	}
-	if err := v.Validate(); err != nil {
-		return nil, fmt.Errorf("error validating config: %s", err)
-	}
-	return v, nil
+	return NewAppConfig(clientConf, &v.DNS, &v.Authenticator)
+}
+
+// ...
+func GetAppConfigValidator() *validator.Validate {
+	validate := validator.New(validator.WithRequiredStructEnabled())
+	return validate
 }
