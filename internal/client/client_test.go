@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/DNS-Pro/core/pkg/client"
+	"github.com/DNS-Pro/core/internal/client"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )

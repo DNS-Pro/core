@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/DNS-Pro/core/pkg/auth"
-	"github.com/DNS-Pro/core/pkg/client"
+	"github.com/DNS-Pro/core/internal/auth"
+	"github.com/DNS-Pro/core/internal/client"
 	"github.com/sirupsen/logrus"
 )
 

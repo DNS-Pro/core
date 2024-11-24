@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/DNS-Pro/core/pkg/auth"
+	"github.com/DNS-Pro/core/internal/auth"
 	"github.com/DNS-Pro/core/pkg/errs"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"

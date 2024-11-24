@@ -5,7 +5,7 @@ package auth
 import (
 	context "context"
 
-	auth "github.com/DNS-Pro/core/pkg/auth"
+	auth "github.com/DNS-Pro/core/internal/auth"
 
 	mock "github.com/stretchr/testify/mock"
 )
