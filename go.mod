@@ -2,7 +2,10 @@ module github.com/DNS-Pro/core
 
 go 1.22.6
 
-require github.com/onsi/gomega v1.34.2
+require (
+	github.com/onsi/gomega v1.34.2
+	github.com/spf13/cobra v1.8.1
+)
 
 require (
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
@@ -11,7 +14,9 @@ require (
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-task/slim-sprig/v3 v3.0.0 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
 )
 
 require (
