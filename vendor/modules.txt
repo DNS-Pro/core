@@ -1,0 +1,584 @@
+# github.com/adrg/xdg v0.5.1
+## explicit; go 1.19
+github.com/adrg/xdg
+github.com/adrg/xdg/internal/pathutil
+github.com/adrg/xdg/internal/userdirs
+# github.com/apernet/hysteria/core/v2 v2.4.5 => github.com/JimmyHuang454/hysteria/core/v2 v2.0.0-20240724161647-b3347cf6334d
+## explicit; go 1.21
+github.com/apernet/hysteria/core/v2/client
+github.com/apernet/hysteria/core/v2/errors
+github.com/apernet/hysteria/core/v2/international/congestion
+github.com/apernet/hysteria/core/v2/international/congestion/bbr
+github.com/apernet/hysteria/core/v2/international/congestion/brutal
+github.com/apernet/hysteria/core/v2/international/congestion/common
+github.com/apernet/hysteria/core/v2/international/frag
+github.com/apernet/hysteria/core/v2/international/pmtud
+github.com/apernet/hysteria/core/v2/international/protocol
+github.com/apernet/hysteria/core/v2/international/utils
+github.com/apernet/hysteria/core/v2/server
+# github.com/apernet/quic-go v0.45.2-0.20240702221538-ed74cfbe8b6e
+## explicit; go 1.21
+github.com/apernet/quic-go
+github.com/apernet/quic-go/congestion
+github.com/apernet/quic-go/http3
+github.com/apernet/quic-go/internal/ackhandler
+github.com/apernet/quic-go/internal/congestion
+github.com/apernet/quic-go/internal/flowcontrol
+github.com/apernet/quic-go/internal/handshake
+github.com/apernet/quic-go/internal/logutils
+github.com/apernet/quic-go/internal/protocol
+github.com/apernet/quic-go/internal/qerr
+github.com/apernet/quic-go/internal/qtls
+github.com/apernet/quic-go/internal/utils
+github.com/apernet/quic-go/internal/utils/linkedlist
+github.com/apernet/quic-go/internal/utils/ringbuffer
+github.com/apernet/quic-go/internal/utils/tree
+github.com/apernet/quic-go/internal/wire
+github.com/apernet/quic-go/logging
+github.com/apernet/quic-go/quicvarint
+# github.com/bufbuild/protocompile v0.14.1
+## explicit; go 1.21
+github.com/bufbuild/protocompile/internal/editions
+github.com/bufbuild/protocompile/protoutil
+# github.com/creasty/defaults v1.8.0
+## explicit; go 1.14
+github.com/creasty/defaults
+# github.com/davecgh/go-spew v1.1.1
+## explicit
+github.com/davecgh/go-spew/spew
+# github.com/dgryski/go-metro v0.0.0-20211217172704-adc40b04c140
+## explicit
+github.com/dgryski/go-metro
+# github.com/ebfe/bcrypt_pbkdf v0.0.0-20140212075826-3c8d2dcb253a
+## explicit
+github.com/ebfe/bcrypt_pbkdf
+github.com/ebfe/bcrypt_pbkdf/blowfish
+# github.com/gabriel-vasile/mimetype v1.4.3
+## explicit; go 1.20
+github.com/gabriel-vasile/mimetype
+github.com/gabriel-vasile/mimetype/internal/charset
+github.com/gabriel-vasile/mimetype/internal/json
+github.com/gabriel-vasile/mimetype/internal/magic
+# github.com/go-logr/logr v1.4.2
+## explicit; go 1.18
+github.com/go-logr/logr
+github.com/go-logr/logr/funcr
+# github.com/go-playground/locales v0.14.1
+## explicit; go 1.17
+github.com/go-playground/locales
+github.com/go-playground/locales/currency
+# github.com/go-playground/universal-translator v0.18.1
+## explicit; go 1.18
+github.com/go-playground/universal-translator
+# github.com/go-playground/validator/v10 v10.23.0
+## explicit; go 1.18
+github.com/go-playground/validator/v10
+# github.com/go-task/slim-sprig/v3 v3.0.0
+## explicit; go 1.20
+github.com/go-task/slim-sprig/v3
+# github.com/golang/protobuf v1.5.4
+## explicit; go 1.17
+github.com/golang/protobuf/jsonpb
+github.com/golang/protobuf/proto
+# github.com/google/go-cmp v0.6.0
+## explicit; go 1.13
+github.com/google/go-cmp/cmp
+github.com/google/go-cmp/cmp/internal/diff
+github.com/google/go-cmp/cmp/internal/flags
+github.com/google/go-cmp/cmp/internal/function
+github.com/google/go-cmp/cmp/internal/value
+# github.com/google/pprof v0.0.0-20241029153458-d1b30febd7db
+## explicit; go 1.22
+github.com/google/pprof/profile
+# github.com/gorilla/websocket v1.5.3
+## explicit; go 1.12
+github.com/gorilla/websocket
+# github.com/inconshreveable/mousetrap v1.1.0
+## explicit; go 1.18
+github.com/inconshreveable/mousetrap
+# github.com/jhump/protoreflect v1.17.0
+## explicit; go 1.21
+github.com/jhump/protoreflect/codec
+github.com/jhump/protoreflect/desc
+github.com/jhump/protoreflect/desc/internal
+github.com/jhump/protoreflect/desc/sourceinfo
+github.com/jhump/protoreflect/dynamic
+github.com/jhump/protoreflect/internal
+github.com/jhump/protoreflect/internal/codec
+# github.com/leodido/go-urn v1.4.0
+## explicit; go 1.18
+github.com/leodido/go-urn
+github.com/leodido/go-urn/scim/schema
+# github.com/lunixbochs/struc v0.0.0-20200707160740-784aaebc1d40
+## explicit; go 1.12
+github.com/lunixbochs/struc
+# github.com/miekg/dns v1.1.62
+## explicit; go 1.19
+github.com/miekg/dns
+# github.com/onsi/ginkgo/v2 v2.22.0
+## explicit; go 1.22.0
+github.com/onsi/ginkgo/v2
+github.com/onsi/ginkgo/v2/config
+github.com/onsi/ginkgo/v2/formatter
+github.com/onsi/ginkgo/v2/ginkgo
+github.com/onsi/ginkgo/v2/ginkgo/build
+github.com/onsi/ginkgo/v2/ginkgo/command
+github.com/onsi/ginkgo/v2/ginkgo/generators
+github.com/onsi/ginkgo/v2/ginkgo/internal
+github.com/onsi/ginkgo/v2/ginkgo/labels
+github.com/onsi/ginkgo/v2/ginkgo/outline
+github.com/onsi/ginkgo/v2/ginkgo/run
+github.com/onsi/ginkgo/v2/ginkgo/unfocus
+github.com/onsi/ginkgo/v2/ginkgo/watch
+github.com/onsi/ginkgo/v2/internal
+github.com/onsi/ginkgo/v2/internal/global
+github.com/onsi/ginkgo/v2/internal/interrupt_handler
+github.com/onsi/ginkgo/v2/internal/parallel_support
+github.com/onsi/ginkgo/v2/internal/testingtproxy
+github.com/onsi/ginkgo/v2/reporters
+github.com/onsi/ginkgo/v2/types
+# github.com/onsi/gomega v1.34.2
+## explicit; go 1.22
+github.com/onsi/gomega
+github.com/onsi/gomega/format
+github.com/onsi/gomega/ghttp
+github.com/onsi/gomega/internal
+github.com/onsi/gomega/internal/gutil
+github.com/onsi/gomega/matchers
+github.com/onsi/gomega/matchers/support/goraph/bipartitegraph
+github.com/onsi/gomega/matchers/support/goraph/edge
+github.com/onsi/gomega/matchers/support/goraph/node
+github.com/onsi/gomega/matchers/support/goraph/util
+github.com/onsi/gomega/types
+# github.com/pelletier/go-toml v1.9.5
+## explicit; go 1.12
+github.com/pelletier/go-toml
+# github.com/pires/go-proxyproto v0.8.0
+## explicit; go 1.18
+github.com/pires/go-proxyproto
+# github.com/pmezard/go-difflib v1.0.0
+## explicit
+github.com/pmezard/go-difflib/difflib
+# github.com/quic-go/qpack v0.5.1
+## explicit; go 1.22
+github.com/quic-go/qpack
+# github.com/quic-go/quic-go v0.48.1
+## explicit; go 1.22
+github.com/quic-go/quic-go
+github.com/quic-go/quic-go/internal/ackhandler
+github.com/quic-go/quic-go/internal/congestion
+github.com/quic-go/quic-go/internal/flowcontrol
+github.com/quic-go/quic-go/internal/handshake
+github.com/quic-go/quic-go/internal/protocol
+github.com/quic-go/quic-go/internal/qerr
+github.com/quic-go/quic-go/internal/qtls
+github.com/quic-go/quic-go/internal/utils
+github.com/quic-go/quic-go/internal/utils/linkedlist
+github.com/quic-go/quic-go/internal/utils/ringbuffer
+github.com/quic-go/quic-go/internal/wire
+github.com/quic-go/quic-go/logging
+github.com/quic-go/quic-go/quicvarint
+# github.com/riobard/go-bloom v0.0.0-20200614022211-cdc8013cb5b3
+## explicit
+github.com/riobard/go-bloom
+# github.com/seiflotfy/cuckoofilter v0.0.0-20220411075957-e3b120b3f5fb
+## explicit; go 1.15
+github.com/seiflotfy/cuckoofilter
+# github.com/sirupsen/logrus v1.9.3
+## explicit; go 1.13
+github.com/sirupsen/logrus
+# github.com/spf13/cobra v1.8.1
+## explicit; go 1.15
+github.com/spf13/cobra
+# github.com/spf13/pflag v1.0.5
+## explicit; go 1.12
+github.com/spf13/pflag
+# github.com/stretchr/objx v0.5.2
+## explicit; go 1.20
+github.com/stretchr/objx
+# github.com/stretchr/testify v1.9.0
+## explicit; go 1.17
+github.com/stretchr/testify/assert
+github.com/stretchr/testify/mock
+# github.com/v2fly/BrowserBridge v0.0.0-20210430233438-0570fc1d7d08
+## explicit; go 1.16
+github.com/v2fly/BrowserBridge/handler
+github.com/v2fly/BrowserBridge/handler/websocketadp
+github.com/v2fly/BrowserBridge/proto
+# github.com/v2fly/VSign v0.0.0-20201108000810-e2adc24bf848
+## explicit; go 1.14
+github.com/v2fly/VSign/common
+github.com/v2fly/VSign/insmgr
+github.com/v2fly/VSign/instimp
+github.com/v2fly/VSign/instructions
+github.com/v2fly/VSign/sign
+github.com/v2fly/VSign/sign/signify
+github.com/v2fly/VSign/signerVerify
+github.com/v2fly/VSign/v2signkey
+# github.com/v2fly/ss-bloomring v0.0.0-20210312155135-28617310f63e
+## explicit; go 1.15
+github.com/v2fly/ss-bloomring
+# github.com/v2fly/v2ray-core/v5 v5.22.0
+## explicit; go 1.22
+github.com/v2fly/v2ray-core/v5
+github.com/v2fly/v2ray-core/v5/app/browserforwarder
+github.com/v2fly/v2ray-core/v5/app/commander
+github.com/v2fly/v2ray-core/v5/app/dispatcher
+github.com/v2fly/v2ray-core/v5/app/dns
+github.com/v2fly/v2ray-core/v5/app/dns/fakedns
+github.com/v2fly/v2ray-core/v5/app/log
+github.com/v2fly/v2ray-core/v5/app/log/command
+github.com/v2fly/v2ray-core/v5/app/observatory
+github.com/v2fly/v2ray-core/v5/app/observatory/burst
+github.com/v2fly/v2ray-core/v5/app/observatory/command
+github.com/v2fly/v2ray-core/v5/app/observatory/multiobservatory
+github.com/v2fly/v2ray-core/v5/app/policy
+github.com/v2fly/v2ray-core/v5/app/proxyman
+github.com/v2fly/v2ray-core/v5/app/proxyman/command
+github.com/v2fly/v2ray-core/v5/app/proxyman/inbound
+github.com/v2fly/v2ray-core/v5/app/proxyman/outbound
+github.com/v2fly/v2ray-core/v5/app/reverse
+github.com/v2fly/v2ray-core/v5/app/router
+github.com/v2fly/v2ray-core/v5/app/router/command
+github.com/v2fly/v2ray-core/v5/app/router/routercommon
+github.com/v2fly/v2ray-core/v5/app/stats
+github.com/v2fly/v2ray-core/v5/app/stats/command
+github.com/v2fly/v2ray-core/v5/common
+github.com/v2fly/v2ray-core/v5/common/antireplay
+github.com/v2fly/v2ray-core/v5/common/bitmask
+github.com/v2fly/v2ray-core/v5/common/buf
+github.com/v2fly/v2ray-core/v5/common/bytespool
+github.com/v2fly/v2ray-core/v5/common/cache
+github.com/v2fly/v2ray-core/v5/common/cmdarg
+github.com/v2fly/v2ray-core/v5/common/crypto
+github.com/v2fly/v2ray-core/v5/common/crypto/internal
+github.com/v2fly/v2ray-core/v5/common/dice
+github.com/v2fly/v2ray-core/v5/common/drain
+github.com/v2fly/v2ray-core/v5/common/environment
+github.com/v2fly/v2ray-core/v5/common/environment/envctx
+github.com/v2fly/v2ray-core/v5/common/environment/envimpl
+github.com/v2fly/v2ray-core/v5/common/environment/filesystemcap
+github.com/v2fly/v2ray-core/v5/common/environment/systemnetworkimpl
+github.com/v2fly/v2ray-core/v5/common/environment/transientstorageimpl
+github.com/v2fly/v2ray-core/v5/common/errors
+github.com/v2fly/v2ray-core/v5/common/log
+github.com/v2fly/v2ray-core/v5/common/mux
+github.com/v2fly/v2ray-core/v5/common/net
+github.com/v2fly/v2ray-core/v5/common/net/packetaddr
+github.com/v2fly/v2ray-core/v5/common/platform
+github.com/v2fly/v2ray-core/v5/common/platform/filesystem
+github.com/v2fly/v2ray-core/v5/common/platform/filesystem/fsifce
+github.com/v2fly/v2ray-core/v5/common/platform/securedload
+github.com/v2fly/v2ray-core/v5/common/protocol
+github.com/v2fly/v2ray-core/v5/common/protocol/bittorrent
+github.com/v2fly/v2ray-core/v5/common/protocol/dns
+github.com/v2fly/v2ray-core/v5/common/protocol/http
+github.com/v2fly/v2ray-core/v5/common/protocol/quic
+github.com/v2fly/v2ray-core/v5/common/protocol/tls
+github.com/v2fly/v2ray-core/v5/common/protocol/tls/cert
+github.com/v2fly/v2ray-core/v5/common/protocol/udp
+github.com/v2fly/v2ray-core/v5/common/protoext
+github.com/v2fly/v2ray-core/v5/common/protofilter
+github.com/v2fly/v2ray-core/v5/common/registry
+github.com/v2fly/v2ray-core/v5/common/retry
+github.com/v2fly/v2ray-core/v5/common/serial
+github.com/v2fly/v2ray-core/v5/common/session
+github.com/v2fly/v2ray-core/v5/common/signal
+github.com/v2fly/v2ray-core/v5/common/signal/done
+github.com/v2fly/v2ray-core/v5/common/signal/pubsub
+github.com/v2fly/v2ray-core/v5/common/signal/semaphore
+github.com/v2fly/v2ray-core/v5/common/strmatcher
+github.com/v2fly/v2ray-core/v5/common/taggedfeatures
+github.com/v2fly/v2ray-core/v5/common/task
+github.com/v2fly/v2ray-core/v5/common/uuid
+github.com/v2fly/v2ray-core/v5/features
+github.com/v2fly/v2ray-core/v5/features/dns
+github.com/v2fly/v2ray-core/v5/features/dns/localdns
+github.com/v2fly/v2ray-core/v5/features/extension
+github.com/v2fly/v2ray-core/v5/features/extension/storage
+github.com/v2fly/v2ray-core/v5/features/inbound
+github.com/v2fly/v2ray-core/v5/features/outbound
+github.com/v2fly/v2ray-core/v5/features/policy
+github.com/v2fly/v2ray-core/v5/features/routing
+github.com/v2fly/v2ray-core/v5/features/routing/dns
+github.com/v2fly/v2ray-core/v5/features/routing/session
+github.com/v2fly/v2ray-core/v5/features/stats
+github.com/v2fly/v2ray-core/v5/infra/conf/cfgcommon
+github.com/v2fly/v2ray-core/v5/infra/conf/cfgcommon/duration
+github.com/v2fly/v2ray-core/v5/infra/conf/cfgcommon/loader
+github.com/v2fly/v2ray-core/v5/infra/conf/cfgcommon/muxcfg
+github.com/v2fly/v2ray-core/v5/infra/conf/cfgcommon/proxycfg
+github.com/v2fly/v2ray-core/v5/infra/conf/cfgcommon/sniffer
+github.com/v2fly/v2ray-core/v5/infra/conf/cfgcommon/socketcfg
+github.com/v2fly/v2ray-core/v5/infra/conf/cfgcommon/tlscfg
+github.com/v2fly/v2ray-core/v5/infra/conf/geodata
+github.com/v2fly/v2ray-core/v5/infra/conf/geodata/standard
+github.com/v2fly/v2ray-core/v5/infra/conf/json
+github.com/v2fly/v2ray-core/v5/infra/conf/rule
+github.com/v2fly/v2ray-core/v5/infra/conf/synthetic/dns
+github.com/v2fly/v2ray-core/v5/infra/conf/synthetic/log
+github.com/v2fly/v2ray-core/v5/infra/conf/synthetic/router
+github.com/v2fly/v2ray-core/v5/infra/conf/v4
+github.com/v2fly/v2ray-core/v5/infra/conf/v5cfg
+github.com/v2fly/v2ray-core/v5/proxy
+github.com/v2fly/v2ray-core/v5/proxy/blackhole
+github.com/v2fly/v2ray-core/v5/proxy/dns
+github.com/v2fly/v2ray-core/v5/proxy/dokodemo
+github.com/v2fly/v2ray-core/v5/proxy/freedom
+github.com/v2fly/v2ray-core/v5/proxy/http
+github.com/v2fly/v2ray-core/v5/proxy/hysteria2
+github.com/v2fly/v2ray-core/v5/proxy/loopback
+github.com/v2fly/v2ray-core/v5/proxy/shadowsocks
+github.com/v2fly/v2ray-core/v5/proxy/socks
+github.com/v2fly/v2ray-core/v5/proxy/trojan
+github.com/v2fly/v2ray-core/v5/proxy/vless
+github.com/v2fly/v2ray-core/v5/proxy/vless/encoding
+github.com/v2fly/v2ray-core/v5/proxy/vless/inbound
+github.com/v2fly/v2ray-core/v5/proxy/vless/outbound
+github.com/v2fly/v2ray-core/v5/proxy/vmess
+github.com/v2fly/v2ray-core/v5/proxy/vmess/aead
+github.com/v2fly/v2ray-core/v5/proxy/vmess/encoding
+github.com/v2fly/v2ray-core/v5/proxy/vmess/inbound
+github.com/v2fly/v2ray-core/v5/proxy/vmess/outbound
+github.com/v2fly/v2ray-core/v5/transport
+github.com/v2fly/v2ray-core/v5/transport/internet
+github.com/v2fly/v2ray-core/v5/transport/internet/domainsocket
+github.com/v2fly/v2ray-core/v5/transport/internet/grpc
+github.com/v2fly/v2ray-core/v5/transport/internet/grpc/encoding
+github.com/v2fly/v2ray-core/v5/transport/internet/headers/http
+github.com/v2fly/v2ray-core/v5/transport/internet/headers/noop
+github.com/v2fly/v2ray-core/v5/transport/internet/headers/srtp
+github.com/v2fly/v2ray-core/v5/transport/internet/headers/tls
+github.com/v2fly/v2ray-core/v5/transport/internet/headers/utp
+github.com/v2fly/v2ray-core/v5/transport/internet/headers/wechat
+github.com/v2fly/v2ray-core/v5/transport/internet/headers/wireguard
+github.com/v2fly/v2ray-core/v5/transport/internet/http
+github.com/v2fly/v2ray-core/v5/transport/internet/hysteria2
+github.com/v2fly/v2ray-core/v5/transport/internet/kcp
+github.com/v2fly/v2ray-core/v5/transport/internet/quic
+github.com/v2fly/v2ray-core/v5/transport/internet/security
+github.com/v2fly/v2ray-core/v5/transport/internet/tagged
+github.com/v2fly/v2ray-core/v5/transport/internet/tcp
+github.com/v2fly/v2ray-core/v5/transport/internet/tls
+github.com/v2fly/v2ray-core/v5/transport/internet/udp
+github.com/v2fly/v2ray-core/v5/transport/internet/websocket
+github.com/v2fly/v2ray-core/v5/transport/pipe
+# github.com/xtaci/smux v1.5.24
+## explicit; go 1.13
+github.com/xtaci/smux
+# go.starlark.net v0.0.0-20230612165344-9532f5667272
+## explicit; go 1.16
+go.starlark.net/internal/compile
+go.starlark.net/internal/spell
+go.starlark.net/resolve
+go.starlark.net/starlark
+go.starlark.net/syntax
+# go.uber.org/mock v0.4.0
+## explicit; go 1.20
+go.uber.org/mock/mockgen
+go.uber.org/mock/mockgen/model
+# go4.org/netipx v0.0.0-20230303233057-f1b76eb4bb35
+## explicit; go 1.18
+go4.org/netipx
+# golang.org/x/crypto v0.28.0
+## explicit; go 1.20
+golang.org/x/crypto/chacha20
+golang.org/x/crypto/chacha20poly1305
+golang.org/x/crypto/ed25519
+golang.org/x/crypto/hkdf
+golang.org/x/crypto/internal/alias
+golang.org/x/crypto/internal/poly1305
+golang.org/x/crypto/sha3
+# golang.org/x/exp v0.0.0-20240506185415-9bf2ced13842
+## explicit; go 1.20
+golang.org/x/exp/constraints
+golang.org/x/exp/rand
+# golang.org/x/mod v0.21.0
+## explicit; go 1.22.0
+golang.org/x/mod/internal/lazyregexp
+golang.org/x/mod/modfile
+golang.org/x/mod/module
+golang.org/x/mod/semver
+# golang.org/x/net v0.30.0
+## explicit; go 1.18
+golang.org/x/net/bpf
+golang.org/x/net/context
+golang.org/x/net/dns/dnsmessage
+golang.org/x/net/html
+golang.org/x/net/html/atom
+golang.org/x/net/html/charset
+golang.org/x/net/http/httpguts
+golang.org/x/net/http2
+golang.org/x/net/http2/h2c
+golang.org/x/net/http2/hpack
+golang.org/x/net/idna
+golang.org/x/net/internal/iana
+golang.org/x/net/internal/socket
+golang.org/x/net/internal/timeseries
+golang.org/x/net/ipv4
+golang.org/x/net/ipv6
+golang.org/x/net/trace
+# golang.org/x/sync v0.8.0
+## explicit; go 1.18
+golang.org/x/sync/errgroup
+# golang.org/x/sys v0.26.0
+## explicit; go 1.18
+golang.org/x/sys/cpu
+golang.org/x/sys/unix
+golang.org/x/sys/windows
+# golang.org/x/text v0.19.0
+## explicit; go 1.18
+golang.org/x/text/encoding
+golang.org/x/text/encoding/charmap
+golang.org/x/text/encoding/htmlindex
+golang.org/x/text/encoding/internal
+golang.org/x/text/encoding/internal/identifier
+golang.org/x/text/encoding/japanese
+golang.org/x/text/encoding/korean
+golang.org/x/text/encoding/simplifiedchinese
+golang.org/x/text/encoding/traditionalchinese
+golang.org/x/text/encoding/unicode
+golang.org/x/text/internal/language
+golang.org/x/text/internal/language/compact
+golang.org/x/text/internal/tag
+golang.org/x/text/internal/utf8internal
+golang.org/x/text/language
+golang.org/x/text/runes
+golang.org/x/text/secure/bidirule
+golang.org/x/text/transform
+golang.org/x/text/unicode/bidi
+golang.org/x/text/unicode/norm
+# golang.org/x/tools v0.26.0
+## explicit; go 1.22.0
+golang.org/x/tools/cover
+golang.org/x/tools/go/ast/astutil
+golang.org/x/tools/go/ast/inspector
+golang.org/x/tools/go/gcexportdata
+golang.org/x/tools/go/packages
+golang.org/x/tools/go/types/objectpath
+golang.org/x/tools/go/types/typeutil
+golang.org/x/tools/imports
+golang.org/x/tools/internal/aliases
+golang.org/x/tools/internal/event
+golang.org/x/tools/internal/event/core
+golang.org/x/tools/internal/event/keys
+golang.org/x/tools/internal/event/label
+golang.org/x/tools/internal/gcimporter
+golang.org/x/tools/internal/gocommand
+golang.org/x/tools/internal/gopathwalk
+golang.org/x/tools/internal/imports
+golang.org/x/tools/internal/packagesinternal
+golang.org/x/tools/internal/pkgbits
+golang.org/x/tools/internal/stdlib
+golang.org/x/tools/internal/typeparams
+golang.org/x/tools/internal/typesinternal
+golang.org/x/tools/internal/versions
+# google.golang.org/genproto/googleapis/rpc v0.0.0-20241113202542-65e8d215514f
+## explicit; go 1.21
+google.golang.org/genproto/googleapis/rpc/status
+# google.golang.org/grpc v1.67.1
+## explicit; go 1.21
+google.golang.org/grpc
+google.golang.org/grpc/attributes
+google.golang.org/grpc/backoff
+google.golang.org/grpc/balancer
+google.golang.org/grpc/balancer/base
+google.golang.org/grpc/balancer/grpclb/state
+google.golang.org/grpc/balancer/pickfirst
+google.golang.org/grpc/balancer/roundrobin
+google.golang.org/grpc/binarylog/grpc_binarylog_v1
+google.golang.org/grpc/channelz
+google.golang.org/grpc/codes
+google.golang.org/grpc/connectivity
+google.golang.org/grpc/credentials
+google.golang.org/grpc/credentials/insecure
+google.golang.org/grpc/encoding
+google.golang.org/grpc/encoding/proto
+google.golang.org/grpc/experimental/stats
+google.golang.org/grpc/grpclog
+google.golang.org/grpc/grpclog/internal
+google.golang.org/grpc/internal
+google.golang.org/grpc/internal/backoff
+google.golang.org/grpc/internal/balancer/gracefulswitch
+google.golang.org/grpc/internal/balancerload
+google.golang.org/grpc/internal/binarylog
+google.golang.org/grpc/internal/buffer
+google.golang.org/grpc/internal/channelz
+google.golang.org/grpc/internal/credentials
+google.golang.org/grpc/internal/envconfig
+google.golang.org/grpc/internal/grpclog
+google.golang.org/grpc/internal/grpcsync
+google.golang.org/grpc/internal/grpcutil
+google.golang.org/grpc/internal/idle
+google.golang.org/grpc/internal/metadata
+google.golang.org/grpc/internal/pretty
+google.golang.org/grpc/internal/resolver
+google.golang.org/grpc/internal/resolver/dns
+google.golang.org/grpc/internal/resolver/dns/internal
+google.golang.org/grpc/internal/resolver/passthrough
+google.golang.org/grpc/internal/resolver/unix
+google.golang.org/grpc/internal/serviceconfig
+google.golang.org/grpc/internal/stats
+google.golang.org/grpc/internal/status
+google.golang.org/grpc/internal/syscall
+google.golang.org/grpc/internal/transport
+google.golang.org/grpc/internal/transport/networktype
+google.golang.org/grpc/keepalive
+google.golang.org/grpc/mem
+google.golang.org/grpc/metadata
+google.golang.org/grpc/peer
+google.golang.org/grpc/reflection
+google.golang.org/grpc/reflection/grpc_reflection_v1
+google.golang.org/grpc/reflection/grpc_reflection_v1alpha
+google.golang.org/grpc/reflection/internal
+google.golang.org/grpc/resolver
+google.golang.org/grpc/resolver/dns
+google.golang.org/grpc/serviceconfig
+google.golang.org/grpc/stats
+google.golang.org/grpc/status
+google.golang.org/grpc/tap
+# google.golang.org/protobuf v1.35.1
+## explicit; go 1.21
+google.golang.org/protobuf/encoding/protojson
+google.golang.org/protobuf/encoding/prototext
+google.golang.org/protobuf/encoding/protowire
+google.golang.org/protobuf/internal/descfmt
+google.golang.org/protobuf/internal/descopts
+google.golang.org/protobuf/internal/detrand
+google.golang.org/protobuf/internal/editiondefaults
+google.golang.org/protobuf/internal/editionssupport
+google.golang.org/protobuf/internal/encoding/defval
+google.golang.org/protobuf/internal/encoding/json
+google.golang.org/protobuf/internal/encoding/messageset
+google.golang.org/protobuf/internal/encoding/tag
+google.golang.org/protobuf/internal/encoding/text
+google.golang.org/protobuf/internal/errors
+google.golang.org/protobuf/internal/filedesc
+google.golang.org/protobuf/internal/filetype
+google.golang.org/protobuf/internal/flags
+google.golang.org/protobuf/internal/genid
+google.golang.org/protobuf/internal/impl
+google.golang.org/protobuf/internal/order
+google.golang.org/protobuf/internal/pragma
+google.golang.org/protobuf/internal/set
+google.golang.org/protobuf/internal/strs
+google.golang.org/protobuf/internal/version
+google.golang.org/protobuf/proto
+google.golang.org/protobuf/protoadapt
+google.golang.org/protobuf/reflect/protodesc
+google.golang.org/protobuf/reflect/protoreflect
+google.golang.org/protobuf/reflect/protoregistry
+google.golang.org/protobuf/runtime/protoiface
+google.golang.org/protobuf/runtime/protoimpl
+google.golang.org/protobuf/types/descriptorpb
+google.golang.org/protobuf/types/dynamicpb
+google.golang.org/protobuf/types/gofeaturespb
+google.golang.org/protobuf/types/known/anypb
+google.golang.org/protobuf/types/known/durationpb
+google.golang.org/protobuf/types/known/emptypb
+google.golang.org/protobuf/types/known/structpb
+google.golang.org/protobuf/types/known/timestamppb
+google.golang.org/protobuf/types/known/wrapperspb
+# gopkg.in/yaml.v3 v3.0.1
+## explicit
+gopkg.in/yaml.v3
