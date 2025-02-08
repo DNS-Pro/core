@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^vendor/
+      - id: end-of-file-fixer
+        exclude: ^vendor/
+      - id: check-yaml
+        exclude: ^vendor/
+      - id: check-added-large-files
+        exclude: ^vendor/
+  - repo: https://github.com/dnephin/pre-commit-golang
+    rev: v0.5.1
+    hooks:
+      - id: go-fmt
+        exclude: ^vendor/
+      - id: go-imports
+        exclude: ^vendor/
+      - id: no-go-testing
+        exclude: ^vendor/
+      - id: golangci-lint
+        exclude: ^vendor/
+      - id: go-unit-tests
+        exclude: ^vendor/
